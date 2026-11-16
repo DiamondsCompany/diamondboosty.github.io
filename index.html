@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>🏆 DiamondBoosty</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@500;600;700&display=swap">
+<style>
+:root{--bg:#02040a;--card:#070b17;--card2:#0b1429;--b:#1f7bff;--b2:#12d8ff;--tx:#eaf2ff;--mut:#7f93b8;--line:#1f7bff40;--glow:0 0 16px rgba(31,123,255,.5);
+color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{background:var(--bg)}
+body{margin:0;background:radial-gradient(800px 400px at 50% -5%,#0b2a6b50,transparent),var(--bg);color:var(--tx);font:600 16px/1.3 Rajdhani,system-ui,sans-serif;min-height:100vh;padding-bottom:96px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:60}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+h2,h3,.logo{font-family:Orbitron,Rajdhani,sans-serif;margin:0}
+h2{font-size:18px;margin:24px 0 10px;font-family:Rajdhani;font-weight:700}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;padding:8px 0;background:linear-gradient(var(--bg) 70%,transparent)}
+.bar{display:flex;align-items:center;gap:8px;padding:6px 8px;border:1.5px solid var(--b);border-radius:999px;background:#050a18;box-shadow:var(--glow),inset 0 0 18px #1f7bff25}
+.logo{flex:1;display:flex;align-items:center;gap:8px;font-size:15px;font-weight:900;white-space:nowrap;padding-left:6px;text-shadow:0 0 12px var(--b)}
+.logo span{color:var(--b2)}
+.pill{display:flex;align-items:center;gap:6px;height:42px;padding:0 14px;border:1.5px solid var(--b);border-radius:999px;background:var(--card2)}
+.pill svg{width:20px;height:20px}
+.ib{position:relative;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--card2);display:grid;place-items:center;transition:.2s}
+.ib:hover{box-shadow:var(--glow);border-color:var(--b2)}
+.ib svg{width:20px;height:20px;stroke:var(--tx);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.dot{position:absolute;top:-3px;right:-3px;min-width:18px;height:18px;border-radius:9px;background:var(--b);font-size:11px;display:none;place-items:center;padding:0 4px}
+.dot.on{display:grid}
+.view{display:none}.view.on{display:block;animation:in .3s ease}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+.banner{position:relative;overflow:hidden;margin-top:6px;border-radius:14px;border:1.5px solid var(--b);box-shadow:var(--glow);background:linear-gradient(100deg,#030614 25%,#0a2a66 60%,#3b9bff 100%);min-height:96px;padding:14px 16px;display:flex;flex-direction:column;justify-content:center}
+.banner h1{margin:0;font:700 24px Rajdhani;letter-spacing:.5px}
+.banner small{font-size:14px;color:#cfe3ff}
+.banner .gem{position:absolute;right:14px;top:50%;width:84px;transform:translateY(-50%);filter:drop-shadow(0 0 18px #12d8ff);animation:fl 4s ease-in-out infinite}
+.banner.hm{min-height:170px;padding:22px}.banner.hm h1{font:900 clamp(20px,5vw,30px) Orbitron;max-width:65%;line-height:1.15}.banner.hm .gem{width:min(38%,180px)}
+.banner p{margin:6px 0 12px;color:#cfe3ff;max-width:60%}
+@keyframes fl{50%{transform:translateY(-58%) rotate(5deg)}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border-radius:12px;background:linear-gradient(135deg,var(--b),#3b9bff);color:#fff;font-weight:700;box-shadow:var(--glow);transition:.2s;text-decoration:none}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 26px var(--b2)}
+.btn.ghost{background:var(--card2);border:1px solid var(--b)}
+.btn.wa{background:linear-gradient(135deg,#1fb85a,#27e39a);color:#02150a}
+.btn.yl{background:#ffc933;color:#201500;box-shadow:none;border-radius:999px;padding:9px 16px}
+.box{margin-top:10px;padding:10px 12px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+.box>.lb{display:flex;align-items:center;gap:8px;color:var(--mut);margin-bottom:8px}
+.box>.lb svg,.ico{width:18px;height:18px;stroke:var(--b2);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.reg{display:flex;align-items:center;gap:10px}.reg .lb{margin:0}
+.opts{display:flex;gap:8px;flex:1}
+.opt{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;height:44px;border-radius:12px;border:1px solid var(--line);background:#050810;font-weight:700;transition:.2s;white-space:nowrap}
+.opt.sel{background:linear-gradient(135deg,var(--b),#4aa3ff);border-color:#6bb4ff;box-shadow:var(--glow)}
+.opt i{font-style:normal;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#1f7bff55;font-size:11px}
+.pays{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.pays .opt{padding:0 4px;font-size:15px}
+.idin{display:flex;align-items:center;height:52px;border:1px solid var(--line);border-radius:12px;background:#04060d;padding:0 8px 0 14px}
+.idin:focus-within{border-color:var(--b2);box-shadow:var(--glow)}
+.idin input{flex:1;min-width:0;background:none;border:0;outline:0;font-size:17px}
+.paste{display:flex;align-items:center;gap:6px;height:36px;padding:0 12px;border-radius:9px;border:1px solid var(--b);background:#0b2a66aa;color:var(--b2)}
+.tabs{display:flex;margin-top:10px;border:1px solid var(--line);border-radius:12px;background:var(--card);overflow:hidden}
+.tabs button{flex:1;height:44px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;transition:.2s}
+.tabs button.on{background:linear-gradient(135deg,var(--b),#4aa3ff);box-shadow:var(--glow)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+@media(min-width:760px){.grid{gap:14px}.g4{grid-template-columns:repeat(4,1fr)}}
+.pk{display:flex;align-items:center;gap:10px;padding:10px;border-radius:14px;background:linear-gradient(160deg,var(--card2),var(--card));border:1px solid var(--line);text-align:left;transition:.25s;position:relative;min-width:0}
+.pk:hover{transform:translateY(-3px)}
+.pk.sel{border-color:var(--b2);box-shadow:var(--glow),inset 0 0 18px #12d8ff22}
+.pk .art{flex:none;width:64px;height:64px;border-radius:50%;background:radial-gradient(circle,#10285a,#060c1e);display:grid;place-items:center}
+.pk .art svg{width:100%;height:100%;filter:drop-shadow(0 0 8px #12d8ff88)}
+.pk .q{font:700 24px Rajdhani;color:#d7dbe3;line-height:1}
+.pk .n{color:var(--mut);font-size:14px;margin:2px 0 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pk .pr{display:inline-block;padding:5px 12px;border-radius:9px;background:linear-gradient(135deg,#1f5fe0,#2d86ff);font-size:19px;font-weight:700;box-shadow:var(--glow)}
+.pk .pr small{font-size:11px;opacity:.8;margin-left:2px}
+.pk .bd{position:absolute;top:6px;right:8px;font-size:11px;padding:1px 8px;border-radius:99px;background:#ffc933;color:#201500}
+.game{border-radius:16px;overflow:hidden;background:var(--card);border:1px solid var(--line);text-align:left;transition:.25s}
+.game:hover{transform:translateY(-4px);border-color:var(--b2);box-shadow:var(--glow)}
+.game .art{height:104px;display:grid;place-items:center;font-size:42px}
+.game .nm{padding:10px 12px;font-weight:700;display:flex;justify-content:space-between;align-items:center;gap:6px}
+.tag{font-size:11px;padding:2px 8px;border-radius:99px;background:#1f7bff33;color:var(--b2)}
+.search{display:flex;align-items:center;gap:10px;padding:0 14px;height:48px;border-radius:14px;background:var(--card);border:1px solid var(--line)}
+.search:focus-within{border-color:var(--b2);box-shadow:var(--glow)}
+.search input{flex:1;background:none;border:0;outline:0;height:100%}
+.rvh{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:24px 0 10px}
+.rvh h2{margin:0;font-size:20px}
+.stars{color:#ffc933;letter-spacing:1px}
+.rvs{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory}
+.rv{flex:0 0 min(78%,300px);scroll-snap-align:start;min-height:130px;padding:14px;border-radius:14px;background:linear-gradient(160deg,var(--card2),var(--card));border:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;gap:12px}
+.av{display:flex;align-items:center;gap:8px;font-weight:700;text-transform:uppercase}
+.av i{font-style:normal;width:26px;height:26px;border-radius:50%;background:var(--b);display:grid;place-items:center;font-size:13px}
+.row{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.card{background:linear-gradient(160deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:14px;padding:14px}
+.bar2{height:8px;border-radius:9px;background:#1f7bff22;overflow:hidden;margin:10px 0}
+.bar2 i{display:block;height:100%;background:linear-gradient(90deg,var(--b),var(--b2));border-radius:9px;box-shadow:var(--glow)}
+.code{font-family:Orbitron;letter-spacing:2px;color:var(--b2);padding:10px 14px;border:1px dashed var(--b);border-radius:10px}
+.back{display:flex;align-items:center;gap:8px;margin:10px 0 4px;color:var(--b2)}
+.checkout{position:fixed;left:0;right:0;bottom:calc(64px + env(safe-area-inset-bottom,0px));z-index:40;padding:10px 14px;background:#050a18f5;border-top:1px solid var(--b);backdrop-filter:blur(10px);display:none}
+.checkout.on{display:block;animation:in .3s}
+.checkout .in{max-width:980px;margin:0 auto;display:flex;gap:12px;align-items:center;justify-content:space-between}
+nav{position:fixed;bottom:0;left:0;right:0;z-index:55;background:#03050bf8;border-top:1px solid var(--b);padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));display:flex;justify-content:center;gap:4px;backdrop-filter:blur(12px)}
+nav button{flex:1;max-width:160px;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px;border-radius:12px;color:var(--mut);font-size:13px;transition:.2s}
+nav button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+nav button.on{color:var(--b2);background:#1f7bff22;text-shadow:0 0 10px var(--b2)}
+.modal{position:fixed;inset:0;z-index:90;background:#000b;display:none;align-items:flex-end;justify-content:center;padding:14px}
+.modal.on{display:flex}
+.sheet{width:100%;max-width:460px;background:var(--card);border:1px solid var(--b);border-radius:20px;padding:18px;box-shadow:var(--glow);animation:in .3s;max-height:88vh;overflow:auto}
+.toast{position:fixed;left:50%;top:calc(80px + env(safe-area-inset-top,0px));transform:translateX(-50%);z-index:99;background:var(--card2);border:1px solid var(--b2);padding:10px 18px;border-radius:12px;box-shadow:var(--glow);display:none;max-width:90%;text-align:center}
+.toast.on{display:block;animation:in .25s}
+.ord{display:flex;justify-content:space-between;gap:10px;margin-bottom:8px}
+.mut{color:var(--mut)}
+.safe{display:flex;gap:14px;flex-wrap:wrap;color:var(--mut);font-size:14px;margin-top:14px}
+footer{margin:26px 0 8px;text-align:center;color:var(--mut);font-size:13px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media(max-width:380px){.pays .opt{font-size:13px}.reg .lb span{display:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9bf3ff"/><stop offset=".5" stop-color="#1f7bff"/><stop offset="1" stop-color="#0a2a9a"/></linearGradient>
+<linearGradient id="gd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3d27a"/><stop offset="1" stop-color="#7a5a14"/></linearGradient>
+<symbol id="dm" viewBox="0 0 64 64"><path d="M16 8h32l12 16-28 34L4 24z" fill="url(#g1)" stroke="#bff6ff" stroke-width="1.5" stroke-linejoin="round"/><path d="M4 24h56M22 24l10-16 10 16M22 24l10 34 10-34" fill="none" stroke="#e6fbff" stroke-opacity=".7" stroke-width="1.2"/></symbol>
+</defs></svg>
+
+<header><div class="wrap"><div class="bar">
+ <div class="logo" id="logo">🏆 <div>Diamond<span>Boosty</span></div></div>
+ <div class="pill" title="Tus monedas"><svg><use href="#dm"/></svg><b id="coins">0</b></div>
+ <button class="ib" id="bSearch" aria-label="Buscar"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
+ <button class="ib" id="bBell" aria-label="Notificaciones"><svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 0112 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 004 0"/></svg><span class="dot on" id="bellDot">2</span></button>
+ <button class="ib" id="bCart" aria-label="Carrito"><svg viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.4a2 2 0 002 1.6h7.7a2 2 0 002-1.5L21 8H6"/></svg><span class="dot" id="cartDot">1</span></button>
+</div></div></header>
+
+<main class="wrap">
+<section class="view on" id="v-home">
+ <div class="banner hm"><h1>Recargas de diamantes al instante</h1><p>Recarga por ID, paga fácil y recibe tus diamantes en minutos.</p><div><button class="btn" data-game="ff">Recargar Free Fire</button></div><svg class="gem" viewBox="0 0 64 64"><use href="#dm"/></svg></div>
+ <h2>Buscar videojuegos</h2>
+ <label class="search"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input id="q" placeholder="Busca tu juego favorito…" autocomplete="off"></label>
+ <h2>Catálogo de juegos</h2>
+ <div class="grid g4" id="games" style="margin-top:0"></div>
+ <div class="rvh"><div><h2 style="font-size:20px;margin:0 0 4px">Referencias de clientes</h2><span class="stars">4,6 ★★★★★</span> <span class="mut">229 referencias</span></div><button class="btn yl" id="allRv">Ver todas →</button></div>
+ <div class="rvs" id="rvs"></div>
+ <h2>Invita y gana recompensas</h2>
+ <div class="card"><p style="margin-top:0">Comparte tu código: tú y tu amigo ganan <b style="color:var(--b2)">50 monedas</b> con su primera recarga.</p>
+ <div class="row" style="flex-wrap:wrap"><span class="code">DBOOSTY-7K2X</span><button class="btn ghost" id="copyRef">Copiar código</button></div>
+ <div class="bar2"><i style="width:40%"></i></div><div class="row mut"><span>2 de 5 invitados</span><span>Premio: 300 monedas</span></div></div>
+ <h2>Soporte</h2>
+ <div class="card row" style="flex-wrap:wrap"><div><div class="mut">Número de soporte</div><div style="font-family:Orbitron;font-size:20px;color:var(--b2)">63879876</div></div><a class="btn wa" id="waSup" target="_blank" rel="noopener">Contactar por WhatsApp</a></div>
+</section>
+
+<section class="view" id="v-ff">
+ <button class="back" id="back">← Catálogo</button>
+ <div class="banner"><h1>FREE FIRE</h1><small>Recarga por ID</small><svg class="gem" viewBox="0 0 64 64"><use href="#dm"/></svg></div>
+ <div class="box reg"><div class="lb"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><span>Región</span></div><div class="opts" id="regions"></div></div>
+ <div class="box"><div class="lb"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Player ID</div>
+  <div class="idin"><input id="pid" inputmode="numeric" placeholder="Introduce tu ID" autocomplete="off"><button class="paste" id="paste"><svg class="ico" viewBox="0 0 24 24"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4h6v3H9z"/></svg>Pegar</button></div></div>
+ <div class="box"><div class="lb"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg>Método de pago</div><div class="pays" id="pays"></div></div>
+ <div class="tabs"><button class="on" data-t="d"><svg class="ico" viewBox="0 0 24 24"><path d="M6 3h12l4 6-10 12L2 9z"/></svg>Diamantes</button><button data-t="o"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M12 8v13M3 12h18M12 8c-3 0-5-1-5-3s3-2 5 3c2-5 5-5 5-3s-2 3-5 3"/></svg>Ofertas extra</button></div>
+ <div class="grid" id="pks"></div>
+ <div class="safe"><span>🔒 Pago seguro</span><span>⚡ Entrega rápida</span><span>💬 Soporte 63879876</span></div>
+</section>
+
+<section class="view" id="v-ord"><h2>Mis órdenes</h2><div id="ordList"></div></section>
+<section class="view" id="v-wal"><h2>Wallet</h2><div class="card"><div class="mut">Monedas disponibles</div><div style="font-family:Orbitron;font-size:34px;color:var(--b2)" id="walCoins">0</div><p class="mut">Gana monedas con cada recarga y al invitar amigos.</p><a class="btn wa" id="waTop" target="_blank" rel="noopener">Recargar saldo por WhatsApp</a></div></section>
+<section class="view" id="v-per"><h2>Perfil</h2><div class="card" style="margin-bottom:12px"><b style="font-size:19px">Jugador DiamondBoosty</b><div class="mut">Nivel Plata · <span id="pOrd">0</span> órdenes</div></div><div class="card"><div class="mut">Soporte</div><div style="font-family:Orbitron;font-size:20px;color:var(--b2);margin:4px 0 10px">63879876</div><a class="btn wa" id="waPer" target="_blank" rel="noopener">Contactar por WhatsApp</a></div></section>
+<footer>© 2026 🏆 DiamondBoosty · Tienda no afiliada oficialmente a Garena.</footer>
+</main>
+
+<div class="checkout" id="co"><div class="in"><div><div class="mut" id="coT">—</div><b id="coP" style="font-size:20px;color:var(--b2)">—</b></div><button class="btn" id="go">Continuar con el pedido</button></div></div>
+<nav>
+ <button class="on" data-v="home"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/></svg>Inicio</button>
+ <button data-v="ord"><svg viewBox="0 0 24 24"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6"/></svg>Órdenes</button>
+ <button data-v="wal"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="14" rx="3"/><path d="M2 10h20M16 15h2"/></svg>Wallet</button>
+ <button data-v="per"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Perfil</button>
+</nav>
+<div class="modal" id="md"><div class="sheet" id="sheet"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const WA="5363879876";
+const RATE={CUP:400,USDT:1,NXC:1,SM:400};
+const PAYS=[["CUP","CUP"],["USDT","USDT"],["NXC","Nxc"],["SM","Saldo"]];
+const REG=[["LATAM","🌎 LATAM & USA"],["ID","🇮🇩 INDONESIA"]];
+const DIA=[[110,.78],[341,2.34],[572,3.96],[1166,7.36],[2398,14.60],[6160,36.85]].map(a=>({d:a[0],p:a[1],n:"Diamantes"}));
+const OFE=[{d:450,p:1.4,n:"Tarjeta semanal",t:"Hot"},{d:2600,p:7.1,n:"Tarjeta mensual",t:"-15%"},{d:1000,p:2.3,n:"Pase Booyah",t:"Nuevo"},{d:1366,p:9.6,n:"Combo Élite",t:"+200"}];
+const GAMES=[["Free Fire","🔥","linear-gradient(135deg,#ff7a18,#7a0b00)","ff"],["Mobile Legends","⚔️","linear-gradient(135deg,#2a6bff,#0a1a52)"],["PUBG Mobile","🪖","linear-gradient(135deg,#caa43a,#3b2d05)"],["Call of Duty","🎯","linear-gradient(135deg,#4a5a6a,#0b1118)"],["Genshin Impact","✨","linear-gradient(135deg,#7a5cff,#1a0f4a)"],["Roblox","🧱","linear-gradient(135deg,#e53935,#3a0505)"],["Clash Royale","👑","linear-gradient(135deg,#12d8ff,#06355a)"],["Honor of Kings","🛡️","linear-gradient(135deg,#d6a33a,#3a1a05)"]];
+const RVS=[["Dankiel","Está muy bueno",5],["Elierff7","Porfa los pases",5],["Yaritza","Llegaron en 10 minutos, todo perfecto",5],["Carlos M.","Muy confiable, ya es mi tienda",5],["Ronald G.","Buen precio y buena atención",4]];
+const S={reg:"LATAM",pay:"NXC",tab:"d",sel:null,coins:0,orders:[]};
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const wa=t=>"https://wa.me/"+WA+(t?"?text="+encodeURIComponent(t):"");
+["#waSup","#waTop","#waPer"].forEach(s=>$(s).href=wa("Hola DiamondBoosty, necesito ayuda."));
+let tt;function toast(m){const t=$("#toast");t.textContent=m;t.className="toast on";clearTimeout(tt);tt=setTimeout(()=>t.className="toast",2400)}
+const fmt=p=>{const c=S.pay==="CUP"||S.pay==="SM";const v=p*RATE[S.pay];const u=c?"CUP":S.pay==="NXC"?"Nxc":"USDT";return [c?Math.round(v).toLocaleString("es"):v.toFixed(2).replace(".",","),u]};
+const price=p=>fmt(p).join(" ");
+function art(d){const g=(x,y,s)=>`<use href="#dm" x="${x}" y="${y}" width="${s}" height="${s}"/>`;
+ let c=d<300?g(22,22,36):d<600?g(10,26,28)+g(34,26,28)+g(22,12,28):d<1000?g(6,34,26)+g(36,34,26)+g(21,20,28)+g(21,38,26):"";
+ if(d>=1000){c=`<path d="M10 34h44v22H10z" fill="#12214a" stroke="url(#gd)" stroke-width="3"/><path d="M10 34c0-8 44-8 44 0" fill="#0a1636" stroke="url(#gd)" stroke-width="3"/>`+g(12,14,22)+g(30,14,22)+g(21,6,22)+(d>2000?g(2,24,18)+g(44,24,18):"")+`<path d="M28 40h8v8h-8z" fill="url(#gd)"/>`}
+ return `<svg viewBox="0 0 64 64">${c}</svg>`}
+function show(v){$$(".view").forEach(e=>e.classList.toggle("on",e.id==="v-"+v));$$("nav button").forEach(b=>b.classList.toggle("on",b.dataset.v===v));upd();scrollTo({top:0,behavior:"smooth"})}
+$$("nav button").forEach(b=>b.onclick=()=>show(b.dataset.v));
+$("#logo").onclick=$("#back").onclick=()=>show("home");
+function renderGames(f=""){const l=GAMES.filter(g=>g[0].toLowerCase().includes(f.toLowerCase()));
+ $("#games").innerHTML=l.map(g=>`<button class="game" data-g="${g[3]||""}"><div class="art" style="background:${g[2]}">${g[1]}</div><div class="nm">${g[0]}<span class="tag">${g[3]?"Activo":"Pronto"}</span></div></button>`).join("")||'<p class="mut">No encontramos ese juego. Prueba con otro nombre.</p>';
+ $$("#games .game").forEach(b=>b.onclick=()=>b.dataset.g?show("ff"):toast("Este juego llegará muy pronto"))}
+$$("[data-game]").forEach(b=>b.onclick=()=>show("ff"));
+$("#q").oninput=e=>renderGames(e.target.value);
+$("#bSearch").onclick=()=>{show("home");setTimeout(()=>{$("#q").scrollIntoView({behavior:"smooth",block:"center"});$("#q").focus()},350)};
+function opts(el,arr,key,cls){$(el).innerHTML=arr.map(a=>`<button class="opt ${S[key]===a[0]?"sel":""}" data-k="${a[0]}">${a[1]}</button>`).join("");
+ $$(el+" .opt").forEach(c=>c.onclick=()=>{S[key]=c.dataset.k;opts(el,arr,key);renderPk()})}
+function renderPk(){const L=S.tab==="d"?DIA:OFE;
+ $("#pks").innerHTML=L.map((a,i)=>{const [v,u]=fmt(a.p);return `<button class="pk ${S.sel&&S.sel.tab===S.tab&&S.sel.i===i?"sel":""}" data-i="${i}">${a.t?`<span class="bd">${a.t}</span>`:""}<div class="art">${art(a.d)}</div><div style="min-width:0"><div class="q">${a.d.toLocaleString("es")}</div><div class="n">${a.n}</div><span class="pr">${v}<small>${u}</small></span></div></button>`}).join("");
+ $$(".pk").forEach(b=>b.onclick=()=>{S.sel={tab:S.tab,i:+b.dataset.i,item:L[+b.dataset.i]};renderPk()});upd()}
+$$(".tabs button").forEach(b=>b.onclick=()=>{S.tab=b.dataset.t;$$(".tabs button").forEach(x=>x.classList.toggle("on",x===b));renderPk()});
+function upd(){const s=S.sel;$("#co").classList.toggle("on",!!s&&$("#v-ff").classList.contains("on"));$("#cartDot").classList.toggle("on",!!s);
+ if(s){$("#coT").textContent=s.item.d.toLocaleString("es")+" diamantes";$("#coP").textContent=price(s.item.p)}}
+$("#bCart").onclick=()=>S.sel?show("ff"):toast("Tu carrito está vacío. Elige un paquete.");
+$("#paste").onclick=async()=>{try{const t=(await navigator.clipboard.readText()).replace(/\D/g,"");if(!t)throw 0;$("#pid").value=t;toast("ID pegado")}catch(e){toast("No pudimos leer el portapapeles. Pega el ID manualmente.");$("#pid").focus()}};
+$("#go").onclick=()=>{const id=$("#pid").value.trim();
+ if(!/^\d{6,14}$/.test(id)){toast("Introduce un ID válido (solo números)");$("#pid").scrollIntoView({behavior:"smooth",block:"center"});$("#pid").focus();return}
+ const it=S.sel.item,pay=PAYS.find(p=>p[0]===S.pay)[1],reg=REG.find(r=>r[0]===S.reg)[1].replace(/^\S+\s/,"");
+ $("#sheet").innerHTML=`<h3 style="margin-bottom:12px">Confirma tu pedido</h3><div class="ord"><span class="mut">Juego</span><b>Free Fire · ${reg}</b></div><div class="ord"><span class="mut">ID</span><b>${id}</b></div><div class="ord"><span class="mut">Paquete</span><b>${it.d.toLocaleString("es")} diamantes</b></div><div class="ord"><span class="mut">Pago</span><b>${pay}</b></div><div class="ord"><span class="mut">Total</span><b style="color:var(--b2);font-size:20px">${price(it.p)}</b></div><div class="row" style="margin-top:14px"><button class="btn ghost" id="x" style="flex:1">Cancelar</button><button class="btn wa" id="ok" style="flex:1">Enviar pedido</button></div>`;
+ $("#md").classList.add("on");$("#x").onclick=()=>$("#md").classList.remove("on");
+ $("#ok").onclick=()=>{const o={id,reg,d:it.d,tot:price(it.p),pay,n:S.orders.length+1};S.orders.unshift(o);S.coins+=Math.max(1,Math.round(it.p));sync();
+  window.open(wa(`Hola DiamondBoosty! Pedido #${o.n}\nJuego: Free Fire (${reg})\nID: ${id}\nPaquete: ${it.d} diamantes\nPago: ${pay}\nTotal: ${o.tot}`),"_blank");
+  $("#md").classList.remove("on");S.sel=null;renderPk();show("ord");toast("Pedido enviado. ¡Ganaste monedas!")}};
+$("#md").onclick=e=>{if(e.target.id==="md")$("#md").classList.remove("on")};
+function sync(){$("#coins").textContent=$("#walCoins").textContent=S.coins;$("#pOrd").textContent=S.orders.length;
+ $("#ordList").innerHTML=S.orders.length?S.orders.map(o=>`<div class="card" style="margin-bottom:10px"><div class="ord"><b>Pedido #${o.n} · ${o.d.toLocaleString("es")} 💎</b><span class="tag">En proceso</span></div><div class="mut">ID ${o.id} · ${o.reg} · ${o.pay}</div><div style="color:var(--b2)">${o.tot}</div></div>`).join(""):'<div class="card mut">Aún no tienes órdenes. Elige un juego y haz tu primera recarga.</div>'}
+const rvHTML=l=>l.map(r=>`<div class="rv"><div class="stars">${"★".repeat(r[2])}${"☆".repeat(5-r[2])}</div><div>${r[1]}</div><div class="av"><i>${r[0][0]}</i>${r[0]}</div></div>`).join("");
+$("#rvs").innerHTML=rvHTML(RVS);
+$("#allRv").onclick=()=>{$("#sheet").innerHTML=`<h3 style="margin-bottom:12px">229 referencias · 4,6 ★</h3><div style="display:grid;gap:10px">${rvHTML(RVS)}</div><button class="btn ghost" id="x" style="width:100%;margin-top:12px">Cerrar</button>`;$("#sheet").querySelectorAll(".rv").forEach(e=>e.style.flex="auto");$("#md").classList.add("on");$("#x").onclick=()=>$("#md").classList.remove("on")};
+$("#bBell").onclick=()=>{$("#bellDot").classList.remove("on");$("#sheet").innerHTML=`<h3 style="margin-bottom:12px">Notificaciones</h3><div class="card" style="margin-bottom:10px">🎁 Bienvenido a DiamondBoosty. Tu primera recarga suma monedas.</div><div class="card" style="margin-bottom:10px">⚡ Nuevas ofertas extra en Free Fire.</div><button class="btn ghost" id="x" style="width:100%">Cerrar</button>`;$("#md").classList.add("on");$("#x").onclick=()=>$("#md").classList.remove("on")};
+$("#copyRef").onclick=async()=>{try{await navigator.clipboard.writeText("DBOOSTY-7K2X");toast("Código copiado")}catch(e){toast("Copia el código manualmente")}};
+renderGames();opts("#regions",REG,"reg");opts("#pays",PAYS,"pay");renderPk();sync();
+</script>
+</body>
+</html>
